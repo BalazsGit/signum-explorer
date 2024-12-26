@@ -171,7 +171,7 @@ USE_TZ = False
 STATIC_URL = "/static/"
 STATIC_ROOT = os.path.join(BASE_DIR, "static")
 
-CACHES = {
+'''CACHES = {
     "default": {
         "BACKEND": "django_redis.cache.RedisCache",
         "LOCATION": f'redis://{os.environ.get("CACHE_DEFAULT_HOST")}:'
@@ -180,7 +180,7 @@ CACHES = {
         "TIMEOUT": None,
         "OPTIONS": {"CLIENT_CLASS": "django_redis.client.DefaultClient"},
     }
-}
+}'''
 
 REST_FRAMEWORK = {
     "DEFAULT_PAGINATION_CLASS": "rest_framework.pagination.LimitOffsetPagination",
@@ -242,7 +242,7 @@ if SENTRY_DSN:
 #    from sentry_sdk.integrations.celery import CeleryIntegration
     from sentry_sdk.integrations.django import DjangoIntegration
     from sentry_sdk.integrations.logging import LoggingIntegration
-    from sentry_sdk.integrations.redis import RedisIntegration
+#    from sentry_sdk.integrations.redis import RedisIntegration
 
     init(
         dsn=SENTRY_DSN,
@@ -250,7 +250,7 @@ if SENTRY_DSN:
             DjangoIntegration(),
 #            CeleryIntegration(),
             LoggingIntegration(event_level=logging.WARNING),
-            RedisIntegration(),
+#            RedisIntegration(),
         ],
     )
 
